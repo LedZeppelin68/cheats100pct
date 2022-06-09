@@ -1,0 +1,89 @@
+<html>
+<head>
+<style>
+	td {
+		padding-top: 3px;
+		padding-bottom: 3px;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	table, th, td {
+		font-family: monospace;
+		border-collapse: collapse;
+		border: 1px solid black;
+	}
+	tr:first-child {
+		background: #3b9c9c;
+		color: white;
+	}
+	tr:nth-child(2n) {
+		background: #e6e6e6;
+		}
+	tr:nth-child(2n+3) {
+		background: #eeeeee;
+		}
+</style>
+<script>
+function jokerdecode()
+{
+	var command = parseInt(document.querySelector('#command').value, 16);
+	
+	const data = [];
+	var i = 0;
+	
+	if (command & 0x0001) { data[i++] = 'SELECT' };
+	if (command & 0x0002) { data[i++] = 'L3' };
+	if (command & 0x0004) { data[i++] = 'R3' };
+	if (command & 0x0008) { data[i++] = 'START' };
+																					    
+	if (command & 0x0010) { data[i++] = 'UP' };
+	if (command & 0x0020) { data[i++] = 'RIGHT' };
+	if (command & 0x0040) { data[i++] = 'DOWN' };
+	if (command & 0x0080) { data[i++] = 'LEFT' };
+																					    
+	if (command & 0x0100) { data[i++] = 'L2' };
+	if (command & 0x0200) { data[i++] = 'R2' };
+	if (command & 0x0400) { data[i++] = 'L1' };
+	if (command & 0x0800) { data[i++] = 'R1' };
+																					    
+	if (command & 0x1000) { data[i++] = 'TRIANGLE' };
+	if (command & 0x2000) { data[i++] = 'CIRCLE' };
+	if (command & 0x4000) { data[i++] = 'CROSS' };
+	if (command & 0x8000) { data[i++] = 'SQUARE' };
+	
+	document.querySelector('#decode').innerText = data.join(' + ');
+}
+</script>
+</head>
+<body>
+<div style="font-size: 20;" ><b>Joker Command Decoder</b></div>
+<br />
+<input type="text" id='command' onchange='jokerdecode()' maxlength='4' />
+<p>
+<div style="font-weight: bold;" id='decode' ><br /></div>
+<p>
+<table>
+	<tr><th>reverse</th><th>normal</th><th>meaning</th></tr>
+	
+	<tr><td>0xFFFE</td><td>0x0001</td><td>SELECT</td></tr>
+	<tr><td>0xFFFD</td><td>0x0002</td><td>L3</td></tr>
+	<tr><td>0xFFFB</td><td>0x0004</td><td>R3</td></tr>
+	<tr><td>0xFFF7</td><td>0x0008</td><td>START</td></tr>
+	
+	<tr><td>0xFFEF</td><td>0x0010</td><td>UP</td></tr>
+	<tr><td>0xFFDF</td><td>0x0020</td><td>RIGHT</td></tr>
+	<tr><td>0xFFBF</td><td>0x0040</td><td>DOWN</td></tr>
+	<tr><td>0xFF7F</td><td>0x0080</td><td>LEFT</td></tr>
+	
+	<tr><td>0xFEFF</td><td>0x0100</td><td>L2</td></tr>
+	<tr><td>0xFDFF</td><td>0x0200</td><td>R2</td></tr>
+	<tr><td>0xFBFF</td><td>0x0400</td><td>L1</td></tr>
+	<tr><td>0xF7FF</td><td>0x0800</td><td>R1</td></tr>
+	
+	<tr><td>0xEFFF</td><td>0x1000</td><td>TRIANGLE</td></tr>
+	<tr><td>0xDFFF</td><td>0x2000</td><td>CIRCLE</td></tr>
+	<tr><td>0xBFFF</td><td>0x4000</td><td>CROSS</td></tr>
+	<tr><td>0x7FFF</td><td>0x8000</td><td>SQUARE</td></tr>
+</table>
+</body>
+</html>
