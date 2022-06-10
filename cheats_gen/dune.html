@@ -1,0 +1,105 @@
+<html>
+<head>
+<style>
+.password {
+	font-family: monospace;
+}
+.password table, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+.password td {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.password th {
+	background: #5c5c5c;
+	color: white;
+}
+.password tr:nth-child(2n+2) {
+	background: #eeeeee;
+}
+.password tr:nth-child(2n+3) {
+	background: #e6e6e6;
+}
+.offset {
+	color: blue;
+}
+.ascii {
+	font-weight: bold;
+}
+.main {
+	font-weight: bolder;
+	font-size: 24;
+	font-family: monospace;
+}
+.title {
+	font-size: 18;
+	font-weight: bold;
+	font-family: monospace;
+}
+</style>
+</head>
+<body>
+<div class="main" >Dune: The Battle for Arrakis</div>
+<p>
+<div class="title" >Level Passwords:</div>
+<p>
+<div class="password" >
+<table>
+<tr><th>HARKONNEN</th><th>ATREIDES</th><th>ORDOS</th><th>effect</th></tr>
+<tr><td>DEMOLITION</td><td>DIPLOMATIC</td><td>DOMINATION</td><td>LEVEL 2</td></tr>
+<tr><td>SPICESATYR</td><td>SPICEDANCE</td><td>SPICESABRE</td><td>LEVEL 3</td></tr>
+<tr><td>BURNINGSUN</td><td>ETERNALSUN</td><td>ARRAKISSUN</td><td>LEVEL 4</td></tr>
+<tr><td>DARKHUNTER</td><td>DEFTHUNTER</td><td>COLDHUNTER</td><td>LEVEL 5</td></tr>
+<tr><td>EVILMENTAT</td><td>FAIRMENTAT</td><td>WILYMENTAT</td><td>LEVEL 6</td></tr>
+<tr><td>ITSJOEBWAN</td><td>ASHLIKENNY</td><td>SLYMELANIE</td><td>LEVEL 7</td></tr>
+<tr><td>DEVASTATOR</td><td>SONICBLAST</td><td>STEALTHWAR</td><td>LEVEL 8</td></tr>
+<tr><td>DEATHRULER</td><td>DUNERUNNER</td><td>POWERCRUSH</td><td>LEVEL 9</td></tr>
+</table>
+</div>
+<p>
+<div class="title" >Misc. Passwords:</div>
+<p>
+<div class="password" >
+<table>
+<tr><th>PASSWORD</th><th>effect</th></tr>
+<tr><td>DUNEFINALE</td><td>???</td></tr>
+<tr><td>LOOKAROUND</td><td>???</td></tr>
+<tr><td>SPLURGEOLA</td><td>???</td></tr>
+<tr><td>PLAYTESTER</td><td>???</td></tr>
+<tr><td>VERSIONNUM</td><td>???</td></tr>
+</table>
+</div>
+<p>
+<div class="title" >Technical info:</div>
+<p>
+<pre>
+<span class='offset' >Offset(h) 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F</span>
+
+<span class='offset' >00020C10</span>              44 45 4D 4F 4C 49 54 49 4F 4E 00 44  <span class='ascii' >    DEMOLITION.D</span>
+<span class='offset' >00020C20</span>  49 50 4C 4F 4D 41 54 49 43 00 44 4F 4D 49 4E 41  <span class='ascii' >IPLOMATIC.DOMINA</span>
+<span class='offset' >00020C30</span>  54 49 4F 4E 00 53 50 49 43 45 53 41 54 59 52 00  <span class='ascii' >TION.SPICESATYR.</span>
+<span class='offset' >00020C40</span>  53 50 49 43 45 44 41 4E 43 45 00 53 50 49 43 45  <span class='ascii' >SPICEDANCE.SPICE</span>
+<span class='offset' >00020C50</span>  53 41 42 52 45 00 42 55 52 4E 49 4E 47 53 55 4E  <span class='ascii' >SABRE.BURNINGSUN</span>
+<span class='offset' >00020C60</span>  00 45 54 45 52 4E 41 4C 53 55 4E 00 41 52 52 41  <span class='ascii' >.ETERNALSUN.ARRA</span>
+<span class='offset' >00020C70</span>  4B 49 53 53 55 4E 00 44 41 52 4B 48 55 4E 54 45  <span class='ascii' >KISSUN.DARKHUNTE</span>
+<span class='offset' >00020C80</span>  52 00 44 45 46 54 48 55 4E 54 45 52 00 43 4F 4C  <span class='ascii' >R.DEFTHUNTER.COL</span>
+<span class='offset' >00020C90</span>  44 48 55 4E 54 45 52 00 45 56 49 4C 4D 45 4E 54  <span class='ascii' >DHUNTER.EVILMENT</span>
+<span class='offset' >00020CA0</span>  41 54 00 46 41 49 52 4D 45 4E 54 41 54 00 57 49  <span class='ascii' >AT.FAIRMENTAT.WI</span>
+<span class='offset' >00020CB0</span>  4C 59 4D 45 4E 54 41 54 00 49 54 53 4A 4F 45 42  <span class='ascii' >LYMENTAT.ITSJOEB</span>
+<span class='offset' >00020CC0</span>  57 41 4E 00 41 53 48 4C 49 4B 45 4E 4E 59 00 53  <span class='ascii' >WAN.ASHLIKENNY.S</span>
+<span class='offset' >00020CD0</span>  4C 59 4D 45 4C 41 4E 49 45 00 44 45 56 41 53 54  <span class='ascii' >LYMELANIE.DEVAST</span>
+<span class='offset' >00020CE0</span>  41 54 4F 52 00 53 4F 4E 49 43 42 4C 41 53 54 00  <span class='ascii' >ATOR.SONICBLAST.</span>
+<span class='offset' >00020CF0</span>  53 54 45 41 4C 54 48 57 41 52 00 44 45 41 54 48  <span class='ascii' >STEALTHWAR.DEATH</span>
+<span class='offset' >00020D00</span>  52 55 4C 45 52 00 44 55 4E 45 52 55 4E 4E 45 52  <span class='ascii' >RULER.DUNERUNNER</span>
+<span class='offset' >00020D10</span>  00 50 4F 57 45 52 43 52 55 53 48 00 44 55 4E 45  <span class='ascii' >.POWERCRUSH.DUNE</span>
+<span class='offset' >00020D20</span>  46 49 4E 41 4C 45 00 4C 4F 4F 4B 41 52 4F 55 4E  <span class='ascii' >FINALE.LOOKAROUN</span>
+<span class='offset' >00020D30</span>  44 00 53 50 4C 55 52 47 45 4F 4C 41 00 50 4C 41  <span class='ascii' >D.SPLURGEOLA.PLA</span>
+<span class='offset' >00020D40</span>  59 54 45 53 54 45 52 00 56 45 52 53 49 4F 4E 4E  <span class='ascii' >YTESTER.VERSIONN</span>
+<span class='offset' >00020D50</span>  55 4D                                            <span class='ascii' >UM              </span>
+</pre>
+</body>
+</html>
