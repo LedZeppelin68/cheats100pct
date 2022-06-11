@@ -1,0 +1,76 @@
+<html>
+<head>
+<script>
+function passgen()
+{
+	var code = 0;
+
+	var param_1 = (document.querySelector('#param_1').checked) ? 1 : 0;
+	var param_2 = (document.querySelector('#param_2').checked) ? 1 : 0;
+	var param_3 = (document.querySelector('#param_3').checked) ? 1 : 0;
+	var param_4 = (document.querySelector('#param_4').checked) ? 0 : 1;
+	var asteroids = (document.querySelector('#param_5').checked) ? 1 : 0;
+	var lvl = document.querySelector('#param_6').selectedIndex;
+	
+	code |= (param_1 != 0) ? 1 << 7 : 1 << 1;
+	code |= (param_2 != 0) ? 1 << 3 : 1 << 13;
+	code |= (param_3 != 0) ? 1 << 10 : 1 << 14;
+	code |= (param_4 != 0) ? 1 << 9 : 1 << 12;
+	
+	code |= asteroids << 5;
+	
+	const table_lvl = [6, 0, 11];
+	
+	for (var i = 0; i < 3; i++)
+	{
+		code |= ((lvl >> i) & 1) << table_lvl[i];
+	}
+
+	var checksum = ((code >> 12) & 0xf) ^ ((code >> 8) & 0xf) ^ ((code >> 4) & 0xf) ^ (code & 0xf);
+
+	const table = [2, 8, 15, 4];
+
+	for ( var i = 0; i < 4; i++)
+	{
+		code |= ((checksum >> i) & 1) << table[i];
+	}
+	
+	const pass = [];
+	
+            for (var i = 10; i >= 0; i--)
+            {
+                pass[i] = String.fromCharCode((code % 3) + 0x41);
+                code = (code / 3) >> 0;
+            }
+	
+	document.querySelector('#decode').innerText = pass.join(', ');
+}
+</script>
+</head>
+<body onload="passgen()">
+<div style="font-size: 20; font-weight: bold;" >Red Zone</div>
+<p>
+<input type="checkbox" onclick="passgen()" id="param_1" ><label for="param_1">parameter 1</label><br />
+<input type="checkbox" onclick="passgen()" id="param_2" ><label for="param_2">parameter 2</label><br />
+<input type="checkbox" onclick="passgen()" id="param_3" ><label for="param_3">parameter 3</label><br />
+<input type="checkbox" onclick="passgen()" id="param_4" ><label for="param_4">invincibility</label><br />
+<input type="checkbox" onclick="passgen()" id="param_5" ><label for="param_5">bonus game</label><br />
+<p>
+<select onchange="passgen()" id="param_6">
+	<option value='0'>MISSION 1</option>
+	<option value='1'>MISSION 2</option>
+	<option value='2'>MISSION 3</option>
+	<option value='3'>MISSION 4</option>
+	<option value='4'>MISSION 5</option>
+	<option value='5'>MISSION 6</option>
+	<option value='6'>MISSION 7</option>
+	<option value='7'>MISSION 8</option>
+</select>
+<label for="param_6">mission select</label>
+
+<p>
+Password:<div style="font-weight: bold;" id='decode' ></div>
+<p>
+Secret password: A, A, A, B, C, C, C, B, B, B, C
+</body>
+</html>
