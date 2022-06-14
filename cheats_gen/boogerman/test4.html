@@ -1,0 +1,48 @@
+<html>
+<head>
+
+<script type="text/javascript">
+
+const ctx = new AudioContext();
+let audio;
+
+fetch("Password.ogg")
+.then(data => data.arrayBuffer())
+.then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
+.then(decodedAudio => {
+audio = decodedAudio;
+});
+
+function play()
+{
+
+const playSound = ctx.createBufferSource();
+playSound.buffer = audio;
+playSound.connect(ctx.destination);
+playSound.start(0);
+}
+</script>
+
+<style>
+body {
+	background-image: url("back2.png");
+	background-color: #000024;
+	animation: animatedBackground 2s linear infinite;
+	background-size: 336px;
+}
+
+@keyframes animatedBackground {
+	0% { background-position: 0 0; }
+	100% { background-position: -336px 0; }
+}
+</style>
+
+</head>
+
+<body onload="play()" >
+
+
+
+
+</body>
+</html>
