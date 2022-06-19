@@ -1,0 +1,64 @@
+#offset {
+    color: blue;
+}
+
+.hex {
+    border: 1px silver solid;
+    border-radius: 8px;
+    box-shadow: 0 0 16px silver, 0 0 16px silver;
+    padding: 8px;
+}
+
+body {
+    font-family: monospace;
+    margin: auto;
+    max-width: max-content;
+}
+
+figure {
+    border: 1px silver solid;
+    border-radius: 8px;
+    box-shadow: 0 0 16px silver, 0 0 16px silver;
+    padding: 8px;
+    margin: auto;
+    display: table;
+    text-align: center;
+}
+
+figcaption {
+    margin-top: 8px;
+}
+
+.password {
+    border: 1px silver solid;
+    border-radius: 8px;
+    box-shadow: 0 0 16px silver, 0 0 16px silver;
+    margin: auto;
+    display: table;
+    padding: 8px;
+}
+
+.password table, td, th {
+    border: 1px silver solid;
+    border-collapse: collapse;
+    padding: 4px 8px;
+}
+
+.password caption {
+    margin-bottom: 8px;
+}
+
+.title {
+    font-size: xxx-large;
+    text-align: center;
+    text-shadow: 0 0 4px gray;
+}
+
+.password tr:nth-child(2n+3) {
+    background-color: #f0f0f0;
+}
+
+.password th {
+    color: white;
+    background-color: #a0a0a0;
+}
