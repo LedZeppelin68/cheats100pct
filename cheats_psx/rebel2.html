@@ -1,0 +1,89 @@
+<style>
+#sprite0 {
+  width: 64px;
+  height: 64px;
+  background: url(rebel2.png) 0 0;
+}
+#sprite1 {
+  width: 64px;
+  height: 64px;
+  background: url(rebel2.png) -64px 0;
+}
+#sprite2 {
+  width: 64px;
+  height: 64px;
+  background: url(rebel2.png) -128px 0;
+}
+#sprite3 {
+  width: 64px;
+  height: 64px;
+  background: url(rebel2.png) -192px 0;
+}
+body {
+	background: white;
+}
+
+</style>
+<script>
+function gen()
+{
+	const glyph = ["TRIANGLE", "CROSS", "CIRCLE", "SQUARE"];
+
+	var param1 = document.querySelector('#param1').selectedIndex + 1; //level
+	var param2 = 0; //unknown
+	var param3 = document.querySelector('#param3').selectedIndex; //difficulty
+	
+	var checksum = (param1 + param2 + param3) & 0xf;
+	
+	var code = param1 | (param2 << 4) | (param3 << 6) | (checksum << 8);
+
+	code ^= 0x974b;
+	
+	var password = '';
+	
+	for (var i = 0; i < 6; i++)
+	{
+		var c = ((code >> i * 2) & 0b11);
+		
+		password = glyph[c] + password;
+		
+		var img = document.querySelector('#p' + i);
+		img.innerHTML = "<div id='sprite" + c + "' />"
+	}
+	
+	//alert(password);
+}
+</script>
+<body onload="gen()" >
+
+<select onchange="gen()" id="param3">
+	<option>easy</option>
+	<option>medium</option>
+	<option>hard</option>
+</select>
+<label for="param3">mission select</label>
+<p>
+<select onchange="gen()" id="param1">
+	<option>chapter 2: the corellia star</option>
+	<option>chapter 3: mining tunnels</option>
+	<option>chapter 4: the mine field</option>
+	<option>chapter 5: interceptor attack</option>
+	<option>chapter 6: the mining facility</option>
+	<option>chapter 7: tie training</option>
+	<option>chapter 8: flight to imdaar</option>
+	<option>chapter 9: the asteroid field</option>
+	<option>chapter 10: speeder bikes</option>
+	<option>>chapter 11: aboard the terror</option>
+	<option>>chapter 12: the sewer</option>
+	<option>>chapter 13: escaping the star destroyer</option>
+	<option>>chapter 14: tie attack</option>
+	<option>>chapter 15: imdaar alpha</option>
+	<option>>finale: the return home</option>
+</select>
+<label for="param1">mission select</label>
+
+<table>
+	<tr><td id="p5" ></td><td id="p4" ></td><td id="p3" ></td><td id="p2" ></td><td id="p1" ></td><td id="p0" ></td></tr>
+</table>
+
+</body>
