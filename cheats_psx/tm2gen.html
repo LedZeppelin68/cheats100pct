@@ -1,0 +1,26 @@
+<script>
+function gen()
+{
+	const glyph = ["SPACE", "TRIANGLE", "CIRCLE", "CROSS", "SQUARE"];
+
+	var param_2 = 3; //arena
+	var param_3 = 1; //player
+	var param_4 = 0;
+	var param_5 = 0;
+	
+	var checksum = ((param_2 - 1) * (param_3 + 1)) % 0xd;
+	
+	var code = (checksum << 10) | ((param_2 - 1) << 1) | ((param_3 + 4) << 4) | (param_4 << 9) | (param_5 << 8);
+	
+	var password = '';
+	
+	for (var i = 0; i < 6; i++)
+	{
+		password = glyph[code % 5] + ' ' + password;
+		code = (code / 5) >> 0;
+	}
+	
+	alert(password);
+}
+</script>
+<body onload="gen()" />
