@@ -1,12 +1,50 @@
+<style>
+#sprite0 {
+  width: 64px;
+  height: 64px;
+  background: url(tm2.png) 0 0;
+}
+#sprite1 {
+  width: 64px;
+  height: 64px;
+  background: url(tm2.png) -64px 0;
+}
+#sprite2 {
+  width: 64px;
+  height: 64px;
+  background: url(tm2.png) -128px 0;
+}
+#sprite3 {
+  width: 64px;
+  height: 64px;
+  background: url(tm2.png) -192px 0;
+}
+#sprite4 {
+  width: 64px;
+  height: 64px;
+  background: url(tm2.png) -256px 0;
+}
+body {
+	background: white;
+	font-family: monospace;
+}
+</style>
+
 <script>
 function gen()
 {
 	const glyph = ["SPACE", "TRIANGLE", "CIRCLE", "CROSS", "SQUARE"];
-
+	
+	var param_3 = 1; //character
 	var param_2 = 3; //arena
-	var param_3 = 1; //player
 	var param_4 = 0;
 	var param_5 = 0;
+	
+	param_3 = document.querySelector('#character').selectedIndex;
+	param_2 = document.querySelector('#arena').selectedIndex + 2;
+	param_4 = (document.querySelector('#dark_tooth').checked) ? 1 : 0;
+	if(param_2 != 8) //Hong Kong
+		param_4 = 0;
 	
 	var checksum = ((param_2 - 1) * (param_3 + 1)) % 0xd;
 	
@@ -16,11 +54,76 @@ function gen()
 	
 	for (var i = 0; i < 6; i++)
 	{
-		password = glyph[code % 5] + ' ' + password;
+		var c = (code % 5);
+		
+		password = glyph[code % 5] + ',' + password;
 		code = (code / 5) >> 0;
+		
+		var img = document.querySelector('#p' + i);
+		img.innerHTML = "<div id='sprite" + c + "'/>"
 	}
 	
-	alert(password);
+	//alert(password);
 }
 </script>
-<body onload="gen()" />
+
+<body onload="gen()">
+<table>
+	<tr>
+		<td>
+			<label for="character">Character</label>
+		</td>
+		<td>
+			<select onchange="gen()" id="character">
+				<option>Hammerhead</option>
+				<option>Outlaw 2</option>
+				<option>Warthog</option>
+				<option>Mr. Grimm</option>
+				<option>Grasshopper</option>
+				<option>Thumper</option>
+				<option>Spectre</option>
+				<option>Road Kill</option>
+				<option>Twister</option>
+				<option>Axel</option>
+				<option>Mr. Slam</option>
+				<option>Shadow</option>
+				<option>Sweet Tooth</option>
+				<option>Minion</option>
+				<option>Dark Tooth</option>
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+			<label for="arena">Arena</label>
+		</td>
+		<td>
+			<select onchange="gen()" id="arena">
+				<option>Moscow</option>
+				<option>Paris</option>
+				<option>Amazonia</option>
+				<option>New York</option>
+				<option>Antarctica</option>
+				<option>Holland</option>
+				<option>Hong Kong</option>
+			</select>
+		</td>
+	</tr>
+</table>
+<table>
+		<td>
+			<input type="checkbox" id="dark_tooth" onclick="gen()">Dark Tooth fight</input>
+		</td>
+</table>
+<table>
+	<tr>
+		<td id="p5"></td>
+		<td id="p4"></td>
+		<td id="p3"></td>
+		<td id="p2"></td>
+		<td id="p1"></td>
+		<td id="p0"></td>
+	</tr>
+</table>
+</body>
