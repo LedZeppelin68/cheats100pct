@@ -1,0 +1,31 @@
+<script>
+function gen()
+{
+	var v0 = 0x4;
+	var v1 = 0x41c64e6d;
+	//var s5 = 1;
+	var _temp = 4;
+	
+	for (var i = 0; i < 5; i++)
+	{
+		do{
+			_temp = Math.imul(_temp, 0x41c64e6d) >>> 0; //17BBE313D8CE6952
+			v0 = _temp + 0x3039;
+			_temp = v0;
+			v0 = (v0 >> 0x10) & 0x7fff;
+			v0 = v0 & 0xf;
+			a0 = 1 << v0;
+		} while (a0 == 0x200 || a0 == 0x400)
+	}
+}
+function mult(v0, v1)
+{
+	var sum = 0;
+	for (var i = 0; i < 8; i++)
+	{
+		sum = (sum + (v0 * ((v1 >> (i * 4)) & 0xf)) << i * 4) >>> 0;
+	}
+	return sum;
+}
+</script>
+<body onload="gen()" />
