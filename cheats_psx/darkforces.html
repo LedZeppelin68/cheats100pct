@@ -1,0 +1,24 @@
+<script>
+function gen()
+{
+	const code = [0x18, 0x11, 0x07, 0x07, 0x10, 0x09, 0x07, 0x05, 0x11, 0x14];
+	var magicword = "BiteMyCrank";
+	
+	var checksum = code[9];
+	var _temp = 0;
+	
+	for (var i = 0; i < 9; i++)
+	{
+		code[i] = (checksum ^ code[i]) & 0x1f;
+		checksum = (checksum - (magicword.charCodeAt(i) >> 2)) & 0xff;
+		checksum = checksum + (((checksum / 0x1f) >> 0) + (checksum - checksum / 0x1f >> 1) >> 4) * -0x1f;
+	}
+	
+	for (var i = 0; i < 9; i++)
+	{
+		_temp += code[i];
+	}
+}
+</script>
+
+<body onload="gen()" />
