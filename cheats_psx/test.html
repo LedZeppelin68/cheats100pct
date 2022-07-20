@@ -1,0 +1,156 @@
+<html>
+<style>
+body {
+	font-family: monospace;
+	//margin: auto;
+}
+table {
+	border: 1px solid;
+	border-collapse: collapse;
+}
+td {
+	width: 48px;
+	height: 48px;
+	text-align: center;
+	border: 1px solid;
+	border-collapse: collapse;
+}
+#description td {
+	padding: 8px;
+	width: max-content;
+}
+#description table {
+	//width: max-content;
+}
+#pre {
+	text-align: left;
+}
+</style>
+<body>
+1. PASSWORD STRUCTURE
+<table>
+	<tr>
+		<td>11</td>
+		<td>10</td>
+		<td>9</td>
+		<td>8</td>
+		<td>7</td>
+		<td>6</td>
+		<td>5</td>
+		<td>4</td>
+		<td>3</td>
+		<td>2</td>
+		<td>1</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td colspan="4">checksum</td>
+		<td colspan="2">param. 3</td>
+		<td colspan="2">param. 2</td>
+		<td colspan="4">param. 1</td>
+	</tr>
+</table>
+<p>
+2. FIELD DESCRIPTION
+<div id="description">
+<table>
+	<tr>
+		<td>param. 1</td>
+		<td>0..3 bit</td>
+		<td id="pre">
+			<span>CHAPTER:</span>
+			<p>
+			<span>0x01: CHAPTER 2: THE CORELLIA STAR</span><br />
+			<span>0x02: CHAPTER 3: MINING TUNNELS</span><br />
+			<span>0x03: CHAPTER 4: THE MINE FIELD</span><br />
+			<span>0x04: CHAPTER 5: INTERCEPTOR ATTACK</span><br />
+			<span>0x05: CHAPTER 6: THE MINING FACILITY</span><br />
+			<span>0x06: CHAPTER 7: TIE TRAINING</span><br />
+			<span>0x07: CHAPTER 8: FLIGHT TO IMDAAR</span><br />
+			<span>0x08: CHAPTER 9: THE ASTEROID FIELD</span><br />
+			<span>0x09: CHAPTER 10: SPEEDER BIKES</span><br />
+			<span>0x0a: CHAPTER 11: ABOARD THE TERROR</span><br />
+			<span>0x0b: CHAPTER 12: THE SEWER</span><br />
+			<span>0x0c: CHAPTER 13: ESCAPING THE STAR DESTROYER</span><br />
+			<span>0x0d: CHAPTER 14: TIE ATTACK</span><br />
+			<span>0x0e: CHAPTER 15: IMDAAR ALPHA</span><br />
+			<span>0x0f: FINALE: THE RETURN HOME</span>
+			<p>
+			<span>SECRET:</span>
+			<p>
+			<span>0x01: MOVIE MODE</span><br />
+			<span>0x02: INVULNERABILITY</span><br />
+			<span>0x04: LEVEL SKIP</span><br />
+			<span>0x08: unknown</span>
+		</td>
+	</tr>
+	<tr >
+		<td>param. 2</td>
+		<td>4,5 bit</td>
+		<td id="pre">
+			<span>unknown</span>
+		</td>
+	</tr>
+	<tr>
+		<td>param. 3</td>
+		<td>6,7 bit</td>
+		<td id="pre">
+			<span>DIFFICULTY</span>
+			<p>
+			<span>0x00: EASY</span><br />
+			<span>0x01: MEDIUM</span><br />
+			<span>0x02: HARD</span><br />
+			<span>0x03: SECRET</span><br />
+		</td>
+	</tr>
+	<tr>
+		<td>param. 4</td>
+		<td>8..11 bit</td>
+		<td id="pre">
+			<span>CHECKSUM</span>
+		</td>
+	</tr>
+</table>
+</div>
+3. CHECKSUM CALCULATION
+<p>
+checksum = (param1 + param2 + param3) & 0x0f
+<p>
+4. PASSWORD GENERATION
+<p>
+12 bit value XOR'ed with magic word 0x974b<br />
+resulting value divided in 2 bit blocks, 6 block total<br />
+<p>
+5. SYMBOL CODING
+<p>
+<span>0b00 - "TRIANGLE"</span><br />
+<span>0b01 - "CROSS"</span><br />
+<span>0b10 - "CIRCLE"</span><br />
+<span>0b11 - "SQUARE"</span>
+<p>
+<table>
+	<tr>
+		<td>11</td>
+		<td>10</td>
+		<td>9</td>
+		<td>8</td>
+		<td>7</td>
+		<td>6</td>
+		<td>5</td>
+		<td>4</td>
+		<td>3</td>
+		<td>2</td>
+		<td>1</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td colspan="2">symbol 1</td>
+		<td colspan="2">symbol 2</td>
+		<td colspan="2">symbol 3</td>
+		<td colspan="2">symbol 4</td>
+		<td colspan="2">symbol 5</td>
+		<td colspan="2">symbol 6</td>
+	</tr>
+</table>
+</body>
+</html>
