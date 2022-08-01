@@ -1,4 +1,90 @@
-<html>
+<style>
+#sprite1 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -48px -48px;
+}
+#sprite2 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -64px -48px;
+}
+#sprite4 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -16px -48px;
+}
+#sprite8 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -32px -48px;
+}
+#sprite16 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -32px 0px;
+}
+#sprite32 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -48px 0px;
+}
+#sprite64 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -32px -16px;
+}
+#sprite128 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -48px -16px;
+}
+#sprite256 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -64px -32px;
+}
+#sprite512 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) 0px -64px;
+}
+#sprite1024 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -16px -64px;
+}
+#sprite2048 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) 0px -48px;
+}
+#sprite4096 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -32px -32px;
+}
+#sprite8192 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -16px -32px;
+}
+#sprite16384 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) -48px -32px;
+}
+#sprite32768 {
+  width: 16px;
+  height: 16px;
+  background: url(tm3.png) 0px -32px;
+}
+body {
+	background: white;
+	font-family: monospace;
+}
+</style>
+
 <script>
 function gen()
 {
@@ -27,6 +113,11 @@ function gen()
 		} while (a0 == 0x200 || a0 == 0x400)
 		
 		password += glyph[a0] + ' ';
+		
+		var c = a0;
+		
+		var img = document.querySelector('#p' + i);
+		img.innerHTML = "<div id='sprite" + c + "'/>"
 	}
 	
 	document.querySelector('#password').innerText = password;
@@ -83,5 +174,13 @@ function gen()
 	</tr>
 </table>
 <div id="password"></div>
+<table>
+	<tr>
+		<td id="p0"></td>
+		<td id="p1"></td>
+		<td id="p2"></td>
+		<td id="p3"></td>
+		<td id="p4"></td>
+	</tr>
+</table>
 </body>
-</html>
